@@ -1,10 +1,8 @@
-const { createServer } = require('http')
-const PORT = 3001
 const deviceWidths = [320, 375, 414, 480, 640, 828, 1024, 1080, 1112, 1200, 1334, 1536, 1668, 1920, 2070, 2224, 2470, 2482, 3000]
-const srcset = deviceWidths.map(w => `/img${w}.svg ${w}w`)
+const srcset = deviceWidths.map(w => `/api/img${w} ${w}w`)
 
-function handler(req, res) {
-	const match = /img([0-9]+).svg/.exec(req.url)
+module.exports = function handler(req, res) {
+	const match = /img([0-9]+)/.exec(req.url)
 	if (match && match[1]) {
 		const size = match[1]
 		const accept = req.headers['accept']
@@ -40,5 +38,3 @@ function handler(req, res) {
 
 }
 
-console.log('Listening on http://localhost:' + PORT)
-createServer(handler).listen(PORT)

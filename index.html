@@ -5,6 +5,12 @@
     <style>img { width:100vw; height:auto; }</style>
   </head>
   <body>
-    <img src="/fallback.svg" srcset="${srcset}" />
+    <script type="text/javascript">
+      const deviceWidths = [320, 375, 414, 480, 640, 828, 1024, 1080, 1112, 1200, 1334, 1536, 1668, 1920, 2070, 2224, 2470, 2482, 3000]
+      const img = new Image()
+      img.src = 'fallback.svg'
+      img.srcset = deviceWidths.map(w => `/api/img?w=${w} ${w}w`)
+      document.querySelector('body').appendChild(img)
+    </script>
   </body>
 </html>

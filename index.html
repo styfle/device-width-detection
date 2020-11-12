@@ -10,7 +10,7 @@
     <script type="text/javascript">
       const deviceWidths = [320, 375, 414, 480, 640, 828, 1024, 1080, 1112, 1200, 1334, 1536, 1668, 1920, 2070, 2224, 2470, 2482, 3000]
       const img = new Image()
-      imt.alt = 'image here';
+      img.alt = 'image here';
       img.src = 'fallback.svg'
       img.sizes = deviceWidths.map(w => `(max-width: ${w}px) ${w}px`).join(', ')
       img.srcset = deviceWidths.map(w => `/api/img?w=${w} ${w}w`).join(', ')

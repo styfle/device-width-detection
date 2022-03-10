@@ -8,13 +8,18 @@
   </head>
   <body>
     <script type="text/javascript">
+      function getSrc(width) {
+        return '/api/img?w=' + width
+      }
+      function getSrcSet(width) {
+        return getSrc(width) + ' ' + width + 'w'
+      }
       var deviceWidths = [320, 375, 414, 480, 640, 828, 1024, 1080, 1112, 1200, 1334, 1536, 1668, 1920, 2070, 2224, 2470, 2482, 3000]
-      var lastIndex = deviceWidths.length - 1
       var img = new Image()
       img.alt = 'image'
-      img.src = `/api/img?w=${deviceWidths[lastIndex]}`
+      img.src = getSrc(deviceWidths[deviceWidths.length - 1])
       img.sizes = '100vw'
-      img.srcset = deviceWidths.map(w => `/api/img?w=${w} ${w}w`).join(', ')
+      img.srcset = deviceWidths.map(getSrcSet).join(', ')
       document.querySelector('body').appendChild(img)
     </script>
   </body>

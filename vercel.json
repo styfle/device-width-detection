@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "headers": [{
+      "source": "/",
+      "headers": [{
+        "key": "Accept-CH",
+        "value": "downlink, ect, rtt, save-data"
+      }]
+  }]
+}
